@@ -1,0 +1,395 @@
+:root {
+  --building-color: #ff9800;
+  --temple-color: #dfdf33;
+  --store-color: #7b1fa2;
+  --bar-color: #ff5722;
+  --church-color: #5073fd;
+  --market-color: #ff0505;
+  --park-color: #337600;
+  --potter-color: #5b3300;
+  --toilet-color: #c00000;
+  --bank-color: #ffea00;
+  --college-color: #606e6b;
+  --hospital-color: #7bd7ff;
+  --hotel-color: #005579;
+  --mosque-color: #a5a5a5;
+  --food-color: #ff8d0b;
+  --school-color: #00bda7;
+}
+
+/*
+ * Optional: Makes the sample page fill the window.
+ */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+ * Always set the map height explicitly to define the size of the div element
+ * that contains the map.
+ */
+#map {
+  height: 100%;
+  width: 100%;
+}
+
+/*
+ * Property styles in unhighlighted state.
+ */
+.property {
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 50%;
+  color: #263238;
+  display: flex;
+  font-size: 14px;
+  gap: 15px;
+  height: 30px;
+  justify-content: center;
+  padding: 4px;
+  position: relative;
+  position: relative;
+  transition: all 0.3s ease-out;
+  width: 30px;
+}
+
+.property::after {
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-top: 9px solid #ffffff;
+  content: "";
+  height: 0;
+  left: 50%;
+  position: absolute;
+  top: 95%;
+  transform: translate(-50%, 0);
+  transition: all 0.3s ease-out;
+  width: 0;
+  z-index: 1;
+}
+
+.property .icon {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.property .icon svg {
+  height: 20px;
+  width: auto;
+}
+
+.property .details {
+  display: none;
+  flex-direction: column;
+  flex: 1;
+}
+
+.property .coordinates {
+  color: #9e9e9e;
+  font-size: 10px;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+.property .features {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.property .features > div {
+  align-items: center;
+  background: #f5f5f5;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  display: flex;
+  font-size: 10px;
+  gap: 5px;
+  padding: 5px;
+}
+
+/*
+ * Property styles in highlighted state.
+ */
+.property.highlight {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.2);
+  height: 80px;
+  padding: 8px 15px;
+  width: auto;
+}
+
+.property.highlight::after {
+  border-top: 9px solid #ffffff;
+}
+
+.property.highlight .details {
+  display: flex;
+}
+
+.property.highlight .icon svg {
+  width: 50px;
+  height: 50px;
+}
+
+/*
+ * Temple icon colors.
+ */
+.property.highlight:has(.fa-om) .icon {
+  color: var(--temple-color);
+}
+
+.property:not(.highlight):has(.fa-om) {
+  background-color: var(--temple-color);
+}
+
+.property:not(.highlight):has(.fa-om)::after {
+  border-top: 9px solid var(--temple-color);
+}
+
+/*
+ * Building icon colors.
+ */
+.property.highlight:has(.fa-building) .icon {
+  color: var(--building-color);
+}
+
+.property:not(.highlight):has(.fa-building) {
+  background-color: var(--building-color);
+}
+
+.property:not(.highlight):has(.fa-building)::after {
+  border-top: 9px solid var(--building-color);
+}
+
+/*
+ * store icon colors.
+ */
+.property.highlight:has(.fa-store) .icon {
+  color: var(--store-color);
+}
+
+.property:not(.highlight):has(.fa-store) {
+  background-color: var(--store-color);
+}
+
+.property:not(.highlight):has(.fa-store)::after {
+  border-top: 9px solid var(--store-color);
+}
+
+/*
+ * Bar icon colors.
+ */
+.property.highlight:has(.fa-wine-bottle) .icon {
+  color: var(--bar-color);
+}
+
+.property:not(.highlight):has(.fa-wine-bottle) {
+  background-color: var(--bar-color);
+}
+
+.property:not(.highlight):has(.fa-wine-bottle)::after {
+  border-top: 9px solid var(--bar-color);
+}
+
+/*
+ * Church icon colors.
+ */
+.property.highlight:has(.fa-church) .icon {
+  color: var(--church-color);
+}
+
+.property:not(.highlight):has(.fa-church) {
+  background-color: var(--church-color);
+}
+
+.property:not(.highlight):has(.fa-church)::after {
+  border-top: 9px solid var(--church-color);
+}
+
+/*
+ * Market icon colors.
+ */
+.property.highlight:has(.fa-cart-shopping) .icon {
+  color: var(--market-color);
+}
+
+.property:not(.highlight):has(.fa-cart-shopping) {
+  background-color: var(--market-color);
+}
+
+.property:not(.highlight):has(.fa-cart-shopping)::after {
+  border-top: 9px solid var(--market-color);
+}
+
+/*
+ * Park icon colors.
+ */
+.property.highlight:has(.fa-tree) .icon {
+  color: var(--park-color);
+}
+
+.property:not(.highlight):has(.fa-tree) {
+  background-color: var(--park-color);
+}
+
+.property:not(.highlight):has(.fa-tree)::after {
+  border-top: 9px solid var(--park-color);
+}
+
+/*
+ * Potter icon colors.
+ */
+.property.highlight:has(.fa-paint-roller) .icon {
+  color: var(--potter-color);
+}
+
+.property:not(.highlight):has(.fa-paint-roller) {
+  background-color: var(--potter-color);
+}
+
+.property:not(.highlight):has(.fa-paint-roller)::after {
+  border-top: 9px solid var(--potter-color);
+}
+
+/*
+ * Toilet icon colors.
+ */
+.property.highlight:has(.fa-restroom) .icon {
+  color: var(--toilet-color);
+}
+
+.property:not(.highlight):has(.fa-restroom) {
+  background-color: var(--toilet-color);
+}
+
+.property:not(.highlight):has(.fa-restroom)::after {
+  border-top: 9px solid var(--toilet-color);
+}
+
+/*
+ * Bank icon colors.
+ */
+.property.highlight:has(.fa-landmark) .icon {
+  color: var(--bank-color);
+}
+
+.property:not(.highlight):has(.fa-landmark) {
+  background-color: var(--bank-color);
+}
+
+.property:not(.highlight):has(.fa-landmark)::after {
+  border-top: 9px solid var(--bank-color);
+}
+
+/*
+ * College icon colors.
+ */
+.property.highlight:has(.fa-graduation-cap) .icon {
+  color: var(--college-color);
+}
+
+.property:not(.highlight):has(.fa-graduation-cap) {
+  background-color: var(--college-color);
+}
+
+.property:not(.highlight):has(.fa-graduation-cap)::after {
+  border-top: 9px solid var(--college-color);
+}
+
+/*
+ * Hospital icon colors.
+ */
+.property.highlight:has(.fa-hospital) .icon {
+  color: var(--hospital-color);
+}
+
+.property:not(.highlight):has(.fa-hospital) {
+  background-color: var(--hospital-color);
+}
+
+.property:not(.highlight):has(.fa-hospital)::after {
+  border-top: 9px solid var(--hospital-color);
+}
+
+/*
+ * hotel icon colors.
+ */
+.property.highlight:has(.fa-bed) .icon {
+  color: var(--hotel-color);
+}
+
+.property:not(.highlight):has(.fa-bed) {
+  background-color: var(--hotel-color);
+}
+
+.property:not(.highlight):has(.fa-bed)::after {
+  border-top: 9px solid var(--hotel-color);
+}
+
+/*
+ * mosque icon colors.
+ */
+.property.highlight:has(.fa-mosque) .icon {
+  color: var(--mosque-color);
+}
+
+.property:not(.highlight):has(.fa-mosque) {
+  background-color: var(--mosque-color);
+}
+
+.property:not(.highlight):has(.fa-mosque)::after {
+  border-top: 9px solid var(--mosque-color);
+}
+
+/*
+ * restaurant icon colors.
+ */
+.property.highlight:has(.fa-utensils) .icon {
+  color: var(--food-color);
+}
+
+.property:not(.highlight):has(.fa-utensils) {
+  background-color: var(--food-color);
+}
+
+.property:not(.highlight):has(.fa-utensils)::after {
+  border-top: 9px solid var(--food-color);
+}
+
+/*
+ * school icon colors.
+ */
+.property.highlight:has(.fa-school) .icon {
+  color: var(--school-color);
+}
+
+.property:not(.highlight):has(.fa-school) {
+  background-color: var(--school-color);
+}
+
+.property:not(.highlight):has(.fa-school)::after {
+  border-top: 9px solid var(--school-color);
+}
+
+.navigate-map-button {
+  background-color: #fff;
+  border: 2px solid #fff;
+  border-radius: 3px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  color: rgb(25, 25, 25);
+  cursor: pointer;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 38px;
+  margin: 8px 10px 22px;
+  padding: 0 5px;
+  text-align: center;
+}

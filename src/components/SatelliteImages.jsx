@@ -1,24 +1,35 @@
 import { Container, Divider, Paper, Typography } from "@mui/material";
-import hom1 from "../layers/Moisture_index.jpg";
-import hom2 from "../layers/NDVI.jpg";
-import hom3 from "../layers/False_color_(urban).jpg";
-import hom4 from "../layers/NDWI.jpg";
+import hom1 from "../satimg/Moisture_index.jpg";
+import hom2 from "../satimg/NDVI.jpg";
+import hom3 from "../satimg/False_color_(urban).jpg";
+import hom4 from "../satimg/NDWI.jpg";
 
-import mes1 from "../layers/SWIR.jpg";
-import mes2 from "../layers/Scene_classification_map.jpg";
-import mes3 from "../layers/True_color.jpg";
-import mes4 from "../layers/False_color.jpg";
-import mes5 from "../layers/Highlight_Optimized_Natural_Color.jpg";
+import mes1 from "../satimg/SWIR.jpg";
+import mes2 from "../satimg/Scene_classification_map.jpg";
+import mes3 from "../satimg/True_color.jpg";
+import mes4 from "../satimg/False_color.jpg";
+import mes5 from "../satimg/Highlight_Optimized_Natural_Color.jpg";
 
-import agricultureImg from "../layers/EVI.jpg";
-import agricultureImg2 from "../layers/Barren_Soil.jpg";
-import agricultureImg3 from "../layers/Moisture_Stress.jpg";
-import agricultureImg4 from "../layers/Agriculture.jpg";
-import agricultureImg5 from "../layers/SAVI.jpg";
+import agricultureImg from "../satimg/EVI.jpg";
+import agricultureImg2 from "../satimg/Barren_Soil.jpg";
+import agricultureImg3 from "../satimg/Moisture_Stress.jpg";
+import agricultureImg4 from "../satimg/Agriculture.jpg";
+import agricultureImg5 from "../satimg/SAVI.jpg";
 
-import cdt from "../layers/True_color_-_pansharpened.jpg";
+import cdt from "../satimg/True_color_-_pansharpened.jpg";
 
-export default function Layers() {
+import oc from "../satimg/Ulyssys_Water_Quality_Viewer_.jpg";
+
+import ur1 from "../satimg/Urban_Classified.jpg";
+import ur2 from "../satimg/Green_City.jpg";
+import ur3 from "../satimg/Urban_Land_Infrared_Color_.jpg";
+
+import vg1 from "../satimg/ARVI.jpg";
+import vg2 from "../satimg/mARI.jpg";
+
+import fl from "../satimg/L2A_True_color.jpg";
+
+export default function SatelliteImages() {
   return (
     <div>
       <Container sx={{ mt: -1 }}>
@@ -242,6 +253,115 @@ export default function Layers() {
             reflectance. Pan-sharpened images have 4x the resolution of the
             usual true color composite, greatly enhancing the usefulness of
             Landsat imagery.
+          </Typography>
+          <Typography variant="h5" paragraph>
+            <u>
+              <strong>Oceans And Water Bodies:</strong>
+            </u>
+          </Typography>
+          <Typography variant="h6" paragraph>
+            <strong>Ulyssys Water Quality Viewer (UWQV)</strong>
+          </Typography>
+          <img src={oc} style={{ width: "80%", height: "80%" }} />
+          <Typography variant="body1" paragraph>
+            The script aims to dynamically visualize the chlorophyll and
+            sediment conditions of water bodies, which are primary indicators of
+            water quality. The chlorophyll content ranges in colors from dark
+            blue (low chlorophyll content) through green to red (high
+            chlorophyll content). Sediment concentrations are colored brown;
+            opaque brown indicates high sediment content.
+          </Typography>
+          <Typography variant="h5" paragraph>
+            <u>
+              <strong>Urban:</strong>
+            </u>
+          </Typography>
+          <Typography variant="h6" paragraph>
+            <strong>Urban Classified Script</strong>
+          </Typography>
+          <img src={ur1} style={{ width: "80%", height: "80%" }} />
+          <Typography variant="body1" paragraph>
+            The Urban Classified script aims to detect built-up areas by
+            separating them from barren ground, vegetation, and water. Areas
+            with a high moisture content are returned in blue; areas indicating
+            built-up areas are returned in white; vegetated areas are returned
+            in green; everything else indicates barren ground and is displayed
+            in brown colors.
+          </Typography>
+          <Typography variant="h6" paragraph>
+            <strong>Green City Script</strong>
+          </Typography>
+          <img src={ur2} style={{ width: "80%", height: "80%" }} />
+          <Typography variant="body1" paragraph>
+            The Green City script aims to raise awareness of green areas in
+            cities around the world. The script takes into account the
+            Normalized Difference Vegetation Index (NDVI) and true color
+            wavelengths; it separates built-up areas from vegetated ones, making
+            it useful for detecting urban areas. Built-up areas are displayed in
+            grey and vegetation is displayed in green.
+          </Typography>
+          <Typography variant="h6" paragraph>
+            <strong>Urban Land Infrared Color Script</strong>
+          </Typography>
+          <img src={ur3} style={{ width: "80%", height: "80%" }} />
+          <Typography variant="body1" paragraph>
+            This script, made by Leo Tolari, combines true color visualization
+            with near-infrared (NIR) and shortwave infrared (SWIR) wavelengths.
+            The script highlights urban areas better than true color, while
+            still looking natural.
+          </Typography>
+          <Typography variant="h5" paragraph>
+            <u>
+              <strong>Vegetation And Forestry:</strong>
+            </u>
+          </Typography>
+          <Typography variant="h6" paragraph>
+            <strong>Atmospherically Resistant Vegetation Index (ARVI)</strong>
+          </Typography>
+          <img src={vg1} style={{ width: "80%", height: "80%" }} />
+          <Typography variant="body1" paragraph>
+            The Atmospherically Resistant Vegetation Index (ARVI) is a
+            vegetation index that minimizes the effects of atmospheric
+            scattering. It is most useful for regions with high content of
+            atmospheric aerosol (fog, dust, smoke, air pollution). The range for
+            an ARVI is -1 to 1 where green vegetation generally falls between
+            values of 0.20 to 0.80.
+          </Typography>
+          <Typography variant="h6" paragraph>
+            <strong>Modified Anthocyanin Reflectance Index</strong>
+          </Typography>
+          <img src={vg2} style={{ width: "80%", height: "80%" }} />
+          <Typography variant="body1" paragraph>
+            Anthocyanins are pigments common in higher plants, causing their
+            red, blue, and purple coloration. They provide valuable information
+            about the physiological status of plants, as they are considered
+            indicators of various types of plant stresses. The reflectance of
+            anthocyanin is highest around 550nm. However, the same wavelengths
+            are reflected by chlorophyll as well. To isolate the anthocyanins,
+            the 700nm spectral band, that reflects only chlorophyll and not
+            anthocyanins, is subtracted. To correct for leaf density and
+            thickness, the near-infrared spectral band (in the recommended
+            wavelengths of 760-800nm), which is related to leaf scattering, is
+            added to the basic ARI index. The new index is called modified ARI
+            or mARI (also ARI2).
+          </Typography>
+          <Typography variant="h5" paragraph>
+            <u>
+              <strong>Floods And Droughts:</strong>
+            </u>
+          </Typography>
+          <Typography variant="h6" paragraph>
+            <strong>True Color Composite</strong>
+          </Typography>
+          <img src={fl} style={{ width: "80%", height: "80%" }} />
+          <Typography variant="body1" paragraph>
+            Sensors carried by satellites can image Earth in different regions
+            of the electromagnetic spectrum. Each region in the spectrum is
+            referred to as a band. Sentinel-2 has 13 bands. True color composite
+            uses visible light bands red, green, and blue in the corresponding
+            red, green, and blue color channels, resulting in a natural colored
+            product, that is a good representation of the Earth as humans would
+            see it naturally.
           </Typography>
         </Paper>
       </Container>

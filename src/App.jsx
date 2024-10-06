@@ -12,7 +12,7 @@ import LivingCondition from "./pages/LivingCondition";
 import Redevelopment from "./pages/Redevelopment";
 import Layout from "./components/Layout";
 import Header from "./components/Header";
-import Layers from "./components/Layers";
+import SatelliteImages from "./components/SatelliteImages";
 
 function App() {
   const router = createBrowserRouter([
@@ -30,7 +30,7 @@ function App() {
                 </div>
 
                 <div className="content-below">
-                  <Layers />
+                  <SatelliteImages />
                 </div>
               </Header>
             </>

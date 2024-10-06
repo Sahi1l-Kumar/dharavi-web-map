@@ -1,11 +1,12 @@
 import { Container, Typography, Paper, Divider } from "@mui/material";
-
+import livingCondition from "../images/living-condition.jpg";
+import livingCondition2 from "../images/living-condition2.jpg";
 export default function LivingCondition() {
   return (
     <Container sx={{ mt: -1 }}>
       <Paper elevation={3} sx={{ p: 3, mb: 4 }}>
         <Typography variant="h4" gutterBottom>
-          STATISTICS
+          Statistics
         </Typography>
         <Divider sx={{ mb: 2 }} />
         <Typography variant="body1" paragraph>
@@ -54,6 +55,11 @@ export default function LivingCondition() {
           point that it’s uninhabitable. Women also have to live in a dangerous
           atmosphere with minimal privacy.
         </Typography>
+        <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+          <img src={livingCondition} style={{ width: "35%", height: "35%" }} />
+          <img src={livingCondition2} style={{ width: "31%", height: "35%" }} />
+        </div>
+        <br />
         <Typography variant="body1" paragraph>
           Most residents live in illegal housing units that are small, cramped,
           and lack basic utilities. Dharavi roads are clogged with traffic on

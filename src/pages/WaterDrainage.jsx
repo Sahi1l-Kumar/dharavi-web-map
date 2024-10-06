@@ -1,11 +1,12 @@
 import { Container, Typography, Paper, Divider } from "@mui/material";
-
+import drainImage from "../images/drainage.jpg";
+import drainImage2 from "../images/drainage2.jpg";
 export default function WaterDrainage() {
   return (
     <Container sx={{ mt: -1 }}>
       <Paper elevation={3} sx={{ p: 3, mb: 4 }}>
         <Typography variant="h4" gutterBottom>
-          WATER SYSTEM
+          Water System
         </Typography>
         <Divider sx={{ mb: 2 }} />
         <Typography variant="body1" paragraph>
@@ -102,6 +103,11 @@ export default function WaterDrainage() {
           Due to its location and poor sewage and drainage systems, Dharavi
           particularly becomes vulnerable to floods during the wet season.
         </Typography>
+        <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+          <img src={drainImage} style={{ width: "37%", height: "35%" }} />
+          <img src={drainImage2} style={{ width: "35%", height: "35%" }} />
+        </div>
+        <br />
         <Typography variant="body1" paragraph>
           <strong>Poor drainage:</strong> Open sewers drain into Mahim Creek,
           which is used for defecation and urination by residents.This causes

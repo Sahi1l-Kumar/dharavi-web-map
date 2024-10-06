@@ -10,43 +10,34 @@ import Covid from "./pages/Covid";
 import GarbageDisposal from "./pages/GarbageDisposal";
 import LivingCondition from "./pages/LivingCondition";
 import Redevelopment from "./pages/Redevelopment";
-import Layout from "./components/Layout"; // Import the new Layout component
+import Layout from "./components/Layout";
+import Header from "./components/Header";
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Layout />, // Use the Layout for all routes
+      element: <Layout />,
       children: [
         {
-          index: true, // Default route when visiting '/'
+          index: true,
           element: (
             <>
-              {/* Content about Dharavi above the map */}
-              <div className="content-above">
-                <h1>Dharavi Overview</h1>
-                <p>
-                  Dharavi is a locality in Mumbai, known as one of the largest
-                  slums in the world. It has a thriving informal economy and
-                  rich cultural diversity.
-                </p>
-              </div>
+              <Header>
+                <div id="map-container" className="map-container">
+                  <BaseMap />
+                </div>
 
-              {/* Base map in the center */}
-              <div className="map-container">
-                <BaseMap />
-              </div>
-
-              {/* Content about Dharavi below the map */}
-              <div className="content-below">
-                <h2>More Details About Dharavi</h2>
-                <p>
-                  Dharavi spans an area of approximately 2.1 square kilometers
-                  and is home to a large population. The area is known for
-                  small-scale industries such as pottery, leather, textiles, and
-                  recycling.
-                </p>
-              </div>
+                <div className="content-below">
+                  <h2>More Details About Dharavi</h2>
+                  <p>
+                    Dharavi spans an area of approximately 2.1 square kilometers
+                    and is home to a large population. The area is known for
+                    small-scale industries such as pottery, leather, textiles,
+                    and recycling.
+                  </p>
+                </div>
+              </Header>
             </>
           ),
         },
@@ -64,7 +55,6 @@ function App() {
 
   return (
     <APIProvider apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
-      {/* RouterProvider used to render the routes */}
       <RouterProvider router={router} />
     </APIProvider>
   );

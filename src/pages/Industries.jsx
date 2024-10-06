@@ -1,5 +1,6 @@
 import { Container, Typography, Paper, Grid, Divider } from "@mui/material";
-
+import potteryImage from "../images/pottery.jpg";
+import potteryImage2 from "../images/pottery2.jpg";
 export default function Industries() {
   return (
     <Container sx={{ mt: -1 }}>
@@ -208,6 +209,11 @@ export default function Industries() {
           colony. There are approximately 500 potters’ families living in the
           colony, including permanent and temporary residents.
         </Typography>
+        <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+          <img src={potteryImage} style={{ width: "35%", height: "35%" }} />
+          <img src={potteryImage2} style={{ width: "35%", height: "35%" }} />
+        </div>
+        <br />
         <Typography variant="body1" paragraph>
           Potters in the Dharavi slums of Mumbai use handcrafted techniques to
           make pottery. The potters get ray clay from Thane, a district close to

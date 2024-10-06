@@ -112,6 +112,7 @@ export default function Sidebar({ setDrawerOpen }) {
         </Toolbar>
       </AppBar>
       <Drawer
+        className="sidebar"
         sx={{
           width: drawerWidth,
           flexShrink: 0,

@@ -11,7 +11,16 @@ import co from "../layers/Coastline.jpg";
 import co2 from "../layers/Coastline 2.jpg";
 
 import da from "../layers/Dharavi Administrative.jpg";
+
 import db from "../layers/Dharavi Births(2015).jpg";
+
+import db1 from "../layers/Dharavi Building Count 2019.jpg";
+import db2 from "../layers/Dharavi Building Count 2020.jpg";
+import db3 from "../layers/Dharavi Building Count 2021.jpg";
+import db4 from "../layers/Dharavi Building Count 2022.jpg";
+import db5 from "../layers/Dharavi Building Count 2023.jpg";
+
+import wq from "../layers/Water Quality.jpg";
 
 export default function Layers() {
   return (
@@ -61,6 +70,22 @@ export default function Layers() {
             </u>
           </Typography>
           <img src={db} style={{ width: "80%", height: "80%" }} />
+          <Typography variant="h5" paragraph>
+            <u>
+              <strong>Dharavi Building Counts:</strong>
+            </u>
+          </Typography>
+          <img src={db1} style={{ width: "80%", height: "80%" }} />
+          <img src={db2} style={{ width: "80%", height: "80%" }} />
+          <img src={db3} style={{ width: "80%", height: "80%" }} />
+          <img src={db4} style={{ width: "80%", height: "80%" }} />
+          <img src={db5} style={{ width: "80%", height: "80%" }} />
+          <Typography variant="h5" paragraph>
+            <u>
+              <strong>Water Quality:</strong>
+            </u>
+          </Typography>
+          <img src={wq} style={{ width: "80%", height: "80%" }} />
         </Paper>
       </Container>
     </div>

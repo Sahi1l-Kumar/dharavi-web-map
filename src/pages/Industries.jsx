@@ -1,6 +1,9 @@
 import { Container, Typography, Paper, Grid, Divider } from "@mui/material";
 import potteryImage from "../images/pottery.jpg";
 import potteryImage2 from "../images/pottery2.jpg";
+import leatherImage from "../images/leather.jpg";
+import leatherImage2 from "../images/leather2.jpg";
+import textileImage from "../images/textile.jpg";
 export default function Industries() {
   return (
     <Container sx={{ mt: -1 }}>
@@ -17,6 +20,11 @@ export default function Industries() {
           contributor to Mumbai’s economy, garnering international acclaim for
           its quality and workmanship.
         </Typography>
+        <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+          <img src={leatherImage} style={{ width: "40%", height: "35%" }} />
+          <img src={leatherImage2} style={{ width: "35%", height: "35%" }} />
+        </div>
+        <br />
         <Typography variant="body1" paragraph>
           Beyond the confines of Dharavi, the leather industry has intricately
           woven its economic threads into the fabric of Mumbai’s financial
@@ -151,6 +159,7 @@ export default function Industries() {
           remained immune to the ups and downs of the export trade because it
           caters mainly to the local market.
         </Typography>
+        <img src={textileImage} style={{ width: "35%", height: "35%" }} />
         <Typography variant="body1" paragraph>
           This is your typical souk, your Kapda bazaar that can be found
           anywhere in India. Daylight never reaches the lane separating the

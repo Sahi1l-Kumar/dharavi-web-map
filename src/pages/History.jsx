@@ -1,5 +1,5 @@
 import { Container, Typography, Paper, Divider } from "@mui/material";
-
+import mafiaImage from "../images/mafia.jpg";
 export default function History() {
   return (
     <Container sx={{ mt: -1 }}>
@@ -128,6 +128,7 @@ export default function History() {
           theft racket. He was arrested and produced before the Bandra court,
           but he jumped bail and disappeared.
         </Typography>
+        <img src={mafiaImage} style={{ width: "35%", height: "35%" }} />
         <Typography variant="body1" paragraph>
           <strong>Latest News 29th September 2024:</strong> Man killed in
           Saturday’s shooting and 6 arrested accused were fighting over ruling

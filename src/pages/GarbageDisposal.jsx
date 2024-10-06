@@ -5,7 +5,7 @@ export default function GarbageDisposal() {
     <Container sx={{ mt: -1 }}>
       <Paper elevation={3} sx={{ p: 3, mb: 4 }}>
         <Typography variant="h4" gutterBottom>
-          Recycling
+          Garbage Disposal and Recycling
         </Typography>
         <Divider sx={{ mb: 2 }} />
         <Typography variant="body1" paragraph>

@@ -1,6 +1,6 @@
 import * as React from "react";
 import PropTypes from "prop-types";
-import { styled } from "@mui/material/styles";
+import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import MuiAppBar from "@mui/material/AppBar";
@@ -15,14 +15,16 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import PeopleIcon from "@mui/icons-material/People";
 import WaterIcon from "@mui/icons-material/Water";
 import HouseIcon from "@mui/icons-material/House";
 import CoronavirusIcon from "@mui/icons-material/Coronavirus";
-import SanitizerIcon from "@mui/icons-material/Sanitizer";
-import HealthAndSafetyIcon from "@mui/icons-material/HealthAndSafety";
-import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
-import WheelchairPickupIcon from "@mui/icons-material/WheelchairPickup";
+import { useMediaQuery } from "@mui/material";
+import HistoryEduIcon from "@mui/icons-material/HistoryEdu";
+import FactoryIcon from "@mui/icons-material/Factory";
+import DeleteIcon from "@mui/icons-material/Delete";
+import ConstructionIcon from "@mui/icons-material/Construction";
+import MapIcon from "@mui/icons-material/Map";
+import { useNavigate } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -71,8 +73,10 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 export default function Sidebar({ setDrawerOpen }) {
-  // Pass prop to set the open state
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const [open, setOpen] = React.useState(false);
+  const navigate = useNavigate();
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -82,6 +86,11 @@ export default function Sidebar({ setDrawerOpen }) {
   const handleDrawerClose = () => {
     setOpen(false);
     setDrawerOpen(false);
+  };
+
+  const handleNavigation = (path) => {
+    isMobile ? handleDrawerClose() : "";
+    isMobile ? navigate(path) : (window.location.href = path);
   };
 
   return (
@@ -98,7 +107,7 @@ export default function Sidebar({ setDrawerOpen }) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Dharavi Data
+            Dharavi Map
           </Typography>
         </Toolbar>
       </AppBar>
@@ -107,13 +116,18 @@ export default function Sidebar({ setDrawerOpen }) {
           width: drawerWidth,
           flexShrink: 0,
           "& .MuiDrawer-paper": {
-            width: drawerWidth,
+            width: isMobile ? "100%" : drawerWidth,
+            height: "100vh",
             boxSizing: "border-box",
           },
         }}
-        variant="persistent"
+        variant={isMobile ? "temporary" : "persistent"}
         anchor="left"
         open={open}
+        onClose={handleDrawerClose}
+        ModalProps={{
+          keepMounted: true,
+        }}
       >
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
@@ -121,22 +135,33 @@ export default function Sidebar({ setDrawerOpen }) {
           </IconButton>
         </DrawerHeader>
         <Divider />
+
+        <List>
+          <ListItem disablePadding>
+            <ListItemButton onClick={() => handleNavigation("/")}>
+              <ListItemIcon>
+                <MapIcon />
+              </ListItemIcon>
+              <ListItemText primary="Map" />
+            </ListItemButton>
+          </ListItem>
+        </List>
+
         <List>
           {[
-            "Population Diversity",
-            "Drainage System",
-            "Improper Living Conditions",
-            "Growth of Diseases",
-          ].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index === 0 ? <PeopleIcon /> : null}
-                  {index === 1 ? <WaterIcon /> : null}
-                  {index === 2 ? <HouseIcon /> : null}
-                  {index === 3 ? <CoronavirusIcon /> : null}
-                </ListItemIcon>
-                <ListItemText primary={text} />
+            { text: "History", icon: <HistoryEduIcon />, path: "/history" },
+            { text: "Industries", icon: <FactoryIcon />, path: "/industries" },
+            {
+              text: "Living Conditions & Sanitation",
+              icon: <HouseIcon />,
+              path: "/living",
+            },
+            { text: "Covid 19", icon: <CoronavirusIcon />, path: "/covid" },
+          ].map((item) => (
+            <ListItem key={item.text} disablePadding>
+              <ListItemButton onClick={() => handleNavigation(item.path)}>
+                <ListItemIcon>{item.icon}</ListItemIcon>
+                <ListItemText primary={item.text} />
               </ListItemButton>
             </ListItem>
           ))}
@@ -144,20 +169,27 @@ export default function Sidebar({ setDrawerOpen }) {
         <Divider />
         <List>
           {[
-            "Poor Sanitation",
-            "Poor Healthcare System",
-            "Poverty Rate High",
-            "Malnutrition Level",
-          ].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index === 0 ? <SanitizerIcon /> : null}
-                  {index === 1 ? <HealthAndSafetyIcon /> : null}
-                  {index === 2 ? <AttachMoneyIcon /> : null}
-                  {index === 3 ? <WheelchairPickupIcon /> : null}
-                </ListItemIcon>
-                <ListItemText primary={text} />
+            {
+              text: "Garbage Disposal",
+              icon: <DeleteIcon />,
+              path: "/garbage",
+            },
+            {
+              text: "Water System & Drainage",
+              icon: <WaterIcon />,
+              path: "/water-drainage",
+            },
+            { text: "Diseases", icon: <CoronavirusIcon />, path: "/diseases" },
+            {
+              text: "Redevelopment Project",
+              icon: <ConstructionIcon />,
+              path: "/redevelopment",
+            },
+          ].map((item) => (
+            <ListItem key={item.text} disablePadding>
+              <ListItemButton onClick={() => handleNavigation(item.path)}>
+                <ListItemIcon>{item.icon}</ListItemIcon>
+                <ListItemText primary={item.text} />
               </ListItemButton>
             </ListItem>
           ))}

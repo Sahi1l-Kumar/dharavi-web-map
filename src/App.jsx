@@ -13,6 +13,7 @@ import Redevelopment from "./pages/Redevelopment";
 import Layout from "./components/Layout";
 import Header from "./components/Header";
 import SatelliteImages from "./components/SatelliteImages";
+import Layers from "./components/Layers";
 
 function App() {
   const router = createBrowserRouter([
@@ -31,6 +32,7 @@ function App() {
 
                 <div className="content-below">
                   <SatelliteImages />
+                  <Layers />
                 </div>
               </Header>
             </>

@@ -1,9 +1,4 @@
-import {
-  Map,
-  useApiIsLoaded,
-  useMap,
-  useMapsLibrary,
-} from "@vis.gl/react-google-maps";
+import { Map, useApiIsLoaded, useMap } from "@vis.gl/react-google-maps";
 import { useEffect, useRef, useState } from "react";
 import "./BaseMap.css";
 import { templeData } from "../../coordinates/temple";
@@ -29,39 +24,12 @@ export const BaseMap = () => {
   const map = useMap();
   //To prevent re-renders
   const markersLoaded = useRef(false);
-  const buttonsLoaded = useRef(false);
 
   useEffect(() => {
     if (!apiIsLoaded || !map) return;
 
     setMapInstance(map);
   }, [apiIsLoaded, map]);
-
-  useEffect(() => {
-    if (!mapInstance) return;
-
-    // Load the KML layer
-    // const kmlLayer = new window.google.maps.KmlLayer({
-    //   url: "https://storage.googleapis.com/dharavi/dharavi-railroads.kml", // Ensure this URL is correct and accessible
-    //   map: mapInstance,
-    //   suppressInfoWindows: false, // Set to true if you don't want default info windows
-    //   preserveViewport: false, // Automatically adjusts the map's viewport to show the KML layer
-    // });
-
-    // // Add event listeners if needed
-    // kmlLayer.addListener("click", (event) => {
-    //   if (event.featureData) {
-    //     const content = event.featureData.infoWindowHtml;
-    //     console.log("KML clicked:", content);
-    //   } else {
-    //     console.log("KML clicked: No feature data available");
-    //   }
-    // });
-
-    // return () => {
-    //   kmlLayer.setMap(null); // Unset the KML layer on cleanup
-    // };
-  }, [mapInstance]);
 
   useEffect(() => {
     if (!mapInstance || markersLoaded.current) return;
@@ -344,50 +312,6 @@ export const BaseMap = () => {
     markersLoaded.current = true;
   }, [mapInstance]);
 
-  // Add the Navigation buttons once the map is ready
-  useEffect(() => {
-    if (!mapInstance || buttonsLoaded.current) {
-      return;
-    } else {
-      // Will be used to navigate between markers
-      const dharavi = { lat: 19.041908, lng: 72.855031 };
-
-      function createNavigateMarkers() {
-        const prevButton = document.createElement("button");
-        const nextButton = document.createElement("button");
-        prevButton.classList.add("navigate-map-button");
-        nextButton.classList.add("navigate-map-button");
-        prevButton.innerHTML = `<i class="fa-solid fa-arrow-left"></i> Prev`;
-        nextButton.innerHTML = `Next <i class="fa-solid fa-arrow-right"></i>`;
-
-        prevButton.addEventListener("click", () => {
-          mapInstance.setCenter(dharavi);
-        });
-
-        nextButton.addEventListener("click", () => {
-          mapInstance.setCenter(dharavi);
-        });
-
-        const navigateDiv = document.createElement("div");
-        navigateDiv.appendChild(prevButton);
-        navigateDiv.appendChild(nextButton);
-        mapInstance.controls[
-          window.google.maps.ControlPosition.BOTTOM_CENTER
-        ].push(navigateDiv);
-      }
-      createNavigateMarkers();
-      buttonsLoaded.current = true;
-    }
-  }, [mapInstance]);
-
-  const mapsLib = useMapsLibrary("maps");
-
-  useEffect(() => {
-    if (!mapsLib || !mapInstance) return;
-    // const svc = new mapsLib.PlacesService(mapInstance);
-    // Do something with the places service
-  }, [mapsLib, mapInstance]);
-
   return (
     <div
       style={{
@@ -404,20 +328,18 @@ export const BaseMap = () => {
           defaultCenter={{ lat: 19.0402, lng: 72.8539 }}
           defaultZoom={15}
           gestureHandling={"greedy"}
-          options={
-            {
-              // restriction: {
-              //   latLngBounds: {
-              //     north: 19.059861,
-              //     south: 19.036278,
-              //     east: 72.871944,
-              //     west: 72.84225,
-              //   },
-              //   strictBounds: true,
-              // },
-              // minZoom: 15,
-            }
-          }
+          options={{
+            restriction: {
+              latLngBounds: {
+                north: 19.059861,
+                south: 19.036278,
+                east: 72.871944,
+                west: 72.84225,
+              },
+              strictBounds: true,
+            },
+            minZoom: 15,
+          }}
           style={{ width: "100%", height: "100%" }}
         />
       </div>

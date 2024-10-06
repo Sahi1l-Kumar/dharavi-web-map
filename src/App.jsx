@@ -12,6 +12,7 @@ import LivingCondition from "./pages/LivingCondition";
 import Redevelopment from "./pages/Redevelopment";
 import Layout from "./components/Layout";
 import Header from "./components/Header";
+import Layers from "./components/Layers";
 
 function App() {
   const router = createBrowserRouter([
@@ -29,13 +30,7 @@ function App() {
                 </div>
 
                 <div className="content-below">
-                  <h2>More Details About Dharavi</h2>
-                  <p>
-                    Dharavi spans an area of approximately 2.1 square kilometers
-                    and is home to a large population. The area is known for
-                    small-scale industries such as pottery, leather, textiles,
-                    and recycling.
-                  </p>
+                  <Layers />
                 </div>
               </Header>
             </>

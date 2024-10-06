@@ -117,7 +117,7 @@ export default function Sidebar({ setDrawerOpen }) {
           width: drawerWidth,
           flexShrink: 0,
           "& .MuiDrawer-paper": {
-            width: isMobile ? "100%" : drawerWidth,
+            width: isMobile ? "85%" : drawerWidth,
             height: "100vh",
             boxSizing: "border-box",
           },
